@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# goal: cmd prompt for mineserver
+#
+mine_user() {
+whoami=`whoami`
+if [ $whoami = mine ]
+  then
+    /bin/bash -c "$1"
+  else
+    echo "wrong user"
+fi
+}
+#
+input_line() {
+service minec cmd "$line"
+}
+
+#program loop
+#
+while [ "$leave" != leave ]
+  do
+#
+#cmd prompt
+  echo -n "server: "
+  read line
+  case $line in
+    [exit|leave|quit|qq|done])
+      echo ':    )'
+      leave=leave
+    ;;
+    *)
+    input_line "$line"
+    ;;
+  esac
+done
+leave=0
+exit 0
