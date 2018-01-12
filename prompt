@@ -3,13 +3,13 @@
 # goal: cmd prompt for mineserver
 #
 mine_user() {
-whoami=`whoami`
-if [ $whoami = mine ]
-  then
-    /bin/bash -c "$1"
-  else
+  mineuser=mine
+  if [[ $(whoami) = $mineuser ]]
+    then
+    /bin/bash -c "$@"
+    else
     echo "wrong user"
-fi
+  fi
 }
 #
 input_line() {
@@ -30,7 +30,7 @@ while [ "$leave" != leave ]
       leave=leave
     ;;
     *)
-    input_line "$line"
+      input_line "$line"
     ;;
   esac
 done
